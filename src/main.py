@@ -2,6 +2,7 @@ from comparative import simpleComparative, multiComparative
 from descriptive import simpleDescriptive, multiDescriptive
 from imagery import simpleImagery, multiImagery
 from control import simpleControl, multiControl
+from practice import simplePractice
 import utils
 from record import RecordAudio
 import speech
@@ -25,7 +26,17 @@ def main():
     ### SIMPLE CHOICE TASK
 
     print("SIMPLE CHOICE TASK")
+    utils.speak("Simple Choice Task. Practice Round.")
     utils.speak("Welcome. Please give a command.")
+
+    # Practice round
+    # Wait for the recommend command
+    command = utils.recognize( rec, mic )
+    while not (command == 'recommend some music'):
+        utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+        command = utils.recognize( rec, mic)
+    
+    simplePractice(rec, mic)
 
     # Iterate over the list to execute different simple choice conditions
     for i in l_random:

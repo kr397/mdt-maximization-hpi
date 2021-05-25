@@ -2,81 +2,59 @@ from comparative import simpleComparative, multiComparative
 from descriptive import simpleDescriptive, multiDescriptive
 from imagery import simpleImagery, multiImagery
 from control import simpleControl, multiControl
-from practice import simplePractice
+from practice import simplePractice, multiPractice
 import utils
 from record import RecordAudio
 import speech
 
+import sys
 import time
 import random
 import speech_recognition as sr
 
 # Main function
 def main():
+    # Get participant ID
+    p_id = input("Participant ID: ")
+
     # Initialize speech recognition
     rec = sr.Recognizer()
     mic = RecordAudio()
 
+    # Prepare the sequence of conditions depending on command line args
+    scond_l = []
+    mcond_l = []
+    done_l = []
+    # Default setting 
+    rand_l = list(range(1,5))
+    rand_l = random.sample(rand_l, len(rand_l))
+    for i in rand_l:
+        scond_l.append('S' + str(i))
+    for i in rand_l:
+        mcond_l.append('M' + str(i))
+
+    print(scond_l)
+
+    # Sessions done already
+    if ( len(sys.argv) > 1 ):
+        done_l = sys.argv[1:]
+    print(done_l)
+
     # Randomize between the different conditions
     l = list(range(4))
     l_random = random.sample(l, len(l))
-
-    ## Add sample interaction with the participant
     
     ### SIMPLE CHOICE TASK
 
     print("SIMPLE CHOICE TASK")
-    utils.speak("Simple Choice Task. Practice Round.")
-    utils.speak("Welcome. Please give a command.")
+    utils.log(p_id, "SIMPLE CHOICE TASK")
 
-    # Practice round
-    # Wait for the recommend command
-    command = utils.recognize( rec, mic )
-    while not (command == 'recommend some music'):
-        utils.speak( "I'm sorry, I did not catch that. Please speak again." )
-        command = utils.recognize( rec, mic)
-    
-    simplePractice(rec, mic)
-
-    # Iterate over the list to execute different simple choice conditions
-    for i in l_random:
-        # Wait for the recommend command
-        command = utils.recognize( rec, mic )
-        while not (command == 'recommend some music'):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
-            command = utils.recognize( rec, mic)
-
-        if i is 0:
-            print("Control Condition")
-            simpleControl(rec, mic)
-        elif i is 1:
-            print("Descriptive Condition")
-            simpleDescriptive(rec, mic)
-        elif i is 2:
-            print("Comparative Condition")
-            simpleComparative(rec, mic)
-        else:
-            print("Imagery Condition")
-            simpleImagery(rec, mic)
-        
-        # Satisfaction
-        text = 'How much were you satisfied with the music? Please rate \
-            your overall satisfaction with your experience on this music \
-            recommendation from one, completely dissatisfied to seven, completely satisfied.'
+    if ( len(done_l) == 0 ):
+        utils.speak("Simple Choice Task. Practice Round.")
+        simplePractice(rec, mic)
+    elif ( len(done_l) < 4 ) :
+        text = 'Please say you are ready when you want to move to the next part.'
         utils.speak( text )
-        sat = utils.recognize( rec, mic )
-        
-        while sat not in ['1', '2', '3', '4', '5', '6', '7']:
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
-            sat = utils.recognize( rec, mic )
-        print('Satisfaction: ' + sat)
-
-        # End instructions
-        text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
-                say you are ready when you want to move to the next part.'
-        utils.speak( text )
-
-        time.sleep(5)
 
         command = utils.recognize( rec, mic )
         while not ("ready" in command):
@@ -84,68 +62,43 @@ def main():
                 utils.speak( "I'm sorry, I did not catch that. Please speak again." )
             command = utils.recognize( rec, mic)
 
-        # Introduction
-        text = "Okay, please give a command."
-        utils.speak( text )
+    # Iterate over the list to execute different simple choice conditions
+    for i in scond_l:
+        print(i)
+        if i == 'S1' and not 'S1' in done_l:
+            print("S1: Control Condition")
+            simpleControl(rec, mic)
+        elif i == 'S2' and not 'S2' in done_l:
+            print("S2: Descriptive Condition")
+            simpleDescriptive(rec, mic)
+        elif i == 'S3' and not 'S3' in done_l:
+            print("S3: Comparative Condition")
+            simpleComparative(rec, mic)
+        elif i == 'S4' and not 'S4' in done_l:
+            print("S4: Imagery Condition")
+            simpleImagery(rec, mic)
     
     ### MULTIPLE CHOICE TASK
 
     print("MULTIPLE CHOICE TASK")
-
+    if  ( len(done_l) < 5 ):
+        utils.speak("Multiple Choice Task. Practice Round.")
+        multiPractice(rec, mic)
+    
     # Iterate over the list to execute different simple choice conditions
-    for i in l_random:
-        # Wait for the recommend command
-        command = utils.recognize( rec, mic )
-        while not (command == 'recommend some music'):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
-            command = utils.recognize( rec, mic)
-
-        if i is 2:
-            print("Control Condition")
+    for i in mcond_l:
+        if i is 'M1' and not 'M1' in done_l:
+            print("M1: Control Condition")
             multiControl(rec, mic)
-        elif i is 0:
-            print("Descriptive Condition")
+        elif i is 'M2' and not 'M2' in done_l:
+            print("M2: Descriptive Condition")
             multiDescriptive(rec, mic)
-        elif i is 3:
-            print("Comparative Condition")
+        elif i is 'M3' and not 'M3' in done_l:
+            print("M3: Comparative Condition")
             multiComparative(rec, mic)
-        else:
-            print("Imagery Condition")
+        elif i is 'M4' and not 'M4' in done_l:
+            print("M4: Imagery Condition")
             multiImagery(rec, mic)
-        
-        # Satisfaction
-        text = 'How much were you satisfied with the music? Please rate \
-            your overall satisfaction with your experience on this music \
-            recommendation from one, completely dissatisfied to seven, completely satisfied.'
-        utils.speak( text )
-        sat = utils.recognize( rec, mic )
-        
-        while sat not in ['1', '2', '3', '4', '5', '6', '7']:
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
-            sat = utils.recognize( rec, mic )
-        print('Satisfaction: ' + sat)
-
-        if (i != l_random[-1] ): 
-            # End instructions
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
-                    say you are ready when you want to move to the next part.'
-            utils.speak( text )
-
-            time.sleep(5)
-
-            command = utils.recognize( rec, mic )
-            while not ("ready" in command):
-                utils.speak( "I'm sorry, I did not catch that. Please speak again." )
-                command = utils.recognize( rec, mic)
-
-            # Introduction
-            text = "Okay, please give a command."
-            utils.speak( text )
-        else :
-            # Last condition
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop.'
-            utils.speak( text )
-
 
 try:
     main()

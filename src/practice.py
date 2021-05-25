@@ -4,6 +4,15 @@ import speech
 import utils
 
 def simplePractice(rec, mic):
+    utils.speak("Welcome. Please give a command.")
+
+    # Practice round
+    # Wait for the recommend command
+    command = utils.recognize( rec, mic )
+    while not (command == 'recommend some music'):
+        utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+        command = utils.recognize( rec, mic)
+
     # Recommend music
     text = "Here is piano music from Spotify."
     utils.speak( text )
@@ -22,7 +31,39 @@ def simplePractice(rec, mic):
         print('Yes')
         utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 0, 30 )
 
+    # Satisfaction
+    text = 'How much were you satisfied with the music? Please rate \
+        your overall satisfaction with your experience on this music \
+        recommendation. From one, completely dissatisfied. To seven completely satisfied.' 
+    utils.speak( text )
+    sat = utils.recognize( rec, mic )
+    
+    while sat not in ['1', '2', '3', '4', '5', '6', '7']:
+        utils.speak("I'm sorry, I did not catch that. Please speak again.")
+        sat = utils.recognize( rec, mic )
+    print('Satisfaction: ' + sat)
+
+    # End instructions
+    text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
+            say you are ready when you want to move to the next part.'
+    utils.speak( text )
+
+    command = utils.recognize( rec, mic )
+    while not ("ready" in command):
+        if (not command == ""):
+            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+        command = utils.recognize( rec, mic)
+
 def multiPractice(rec, mic):
+    utils.speak("Welcome. Please give a command.")
+
+    # Practice round
+    # Wait for the recommend command
+    command = utils.recognize( rec, mic )
+    while not (command == 'recommend some music'):
+        utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+        command = utils.recognize( rec, mic)
+
     # Recommend music, give choices
     text = "Here are 3 music recommendations for you from Spotify."
     utils.speak( text )
@@ -35,17 +76,17 @@ def multiPractice(rec, mic):
         choice = utils.recognize( rec, mic )
 
     if choice == '1':
-        print("Choice 1: Indigo by Yiruma")
-        utils.speak("Okay, playing 1.")
-        utils.play( 'music-files/2_Multiple_04_01_Wait\ There.mp3', 0, 30 )
+        print("Choice 1")
+        utils.speak("Okay, playing Scenery by Yiruma.")
+        utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 0, 30 )
     elif choice == '2':
-        print("Choice 2: Wait There by Yiruma")
-        utils.speak("Okay, playing 2.")
-        utils.play( 'music-files/2_Multiple_04_02_Indigo.mp3', 0, 30 )
+        print("Choice 2")
+        utils.speak("Okay, playing Scenery by Yiruma.")
+        utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 0, 30 )
     elif choice == '3':
-        print("Choice 3: Yellow Room by Yiruma")
-        utils.speak("Okay, playing 3.")
-        utils.play( 'music-files/2_Multiple_04_03_Yellow\ Room.mp3', 0, 30 )
+        print("Choice 3")
+        utils.speak("Okay, playing Scenery by Yiruma.")
+        utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 0, 30 )
 
     # Check
     text = 'Do you want to continue this music?'
@@ -59,8 +100,31 @@ def multiPractice(rec, mic):
     if command == 'yes':
         print('Yes')
         if choice == '1':
-            utils.play( 'music-files/2_Multiple_04_01_Wait\ There.mp3', 30, 60 )
+            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
         elif choice == '2':
-            utils.play( 'music-files/2_Multiple_04_02_Indigo.mp3', 30, 30 )
+            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 30 )
         elif choice == '3':
-            utils.play( 'music-files/2_Multiple_04_03_Yellow\ Room.mp3', 30, 30 )
+            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 30 )
+
+    # Satisfaction
+    text = 'How much were you satisfied with the music? Please rate \
+        your overall satisfaction with your experience on this music \
+        recommendation. From one, completely dissatisfied. To seven completely satisfied.' 
+    utils.speak( text )
+    sat = utils.recognize( rec, mic )
+    
+    while sat not in ['1', '2', '3', '4', '5', '6', '7']:
+        utils.speak("I'm sorry, I did not catch that. Please speak again.")
+        sat = utils.recognize( rec, mic )
+    print('Satisfaction: ' + sat)
+
+    # End instructions
+    text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
+            say you are ready when you want to move to the next part.'
+    utils.speak( text )
+
+    command = utils.recognize( rec, mic )
+    while not ("ready" in command):
+        if (not command == ""):
+            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+        command = utils.recognize( rec, mic)

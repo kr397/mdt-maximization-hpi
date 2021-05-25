@@ -9,7 +9,7 @@ class RecordAudio:
     def __init__(s):
         s.chunk = 512  # Record in chunks of 1024 samples
         s.channels = 1
-        s.seconds = 3
+        s.seconds = 4
         s.filename = "output.wav"
         s.frames = [] # Empty array to store frames
 

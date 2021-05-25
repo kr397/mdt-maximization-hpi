@@ -4,6 +4,8 @@ import speech
 import utils
 
 def simpleImagery(rec, mic):
+    utils.log(id, "S4: Imagery Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -18,6 +20,7 @@ def simpleImagery(rec, mic):
     text = "Here is comfortable and cozy piano music."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_03_May\ Be.mp3', 0, 30 )
+    utils.log(id, "Playing: May Be")
 
     # Check
     text = 'Do you want to continue this music?'
@@ -28,6 +31,7 @@ def simpleImagery(rec, mic):
         utils.speak( "I'm sorry, I did not catch that.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_03_May\ Be.mp3', 0, 30 )
@@ -43,6 +47,7 @@ def simpleImagery(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
@@ -55,7 +60,9 @@ def simpleImagery(rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
-def multiImagery(rec, mic):
+def multiImagery(id, rec, mic):
+    utils.log(id, "M4: Imagery Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -77,6 +84,7 @@ def multiImagery(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
+    utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Hope by Yiruma")
         utils.speak("Okay, playing 1.")
@@ -99,6 +107,7 @@ def multiImagery(rec, mic):
         utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         if choice == '1':
@@ -119,6 +128,7 @@ def multiImagery(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \

@@ -3,7 +3,9 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleControl(rec, mic):
+def simpleControl(id, rec, mic):
+    utils.log( id, "S1: Control Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -18,6 +20,7 @@ def simpleControl(rec, mic):
     text = "Here is piano music from Spotify."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_04_Love\ Me.mp3', 0, 30 )
+    utils.log(id, "Playing: Love Me")
 
     # Check
     text = 'Do you want to continue this music?'
@@ -28,6 +31,7 @@ def simpleControl(rec, mic):
         utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command )
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_04_Love\ Me.mp3', 30, 60 )
@@ -43,6 +47,7 @@ def simpleControl(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
@@ -55,7 +60,9 @@ def simpleControl(rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
-def multiControl(rec, mic):
+def multiControl(id, rec, mic):
+    utils.log(id, "M1: Control Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -77,6 +84,7 @@ def multiControl(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
+    utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Indigo by Yiruma")
         utils.speak("Okay, playing Indigo by Yiruma")
@@ -99,6 +107,7 @@ def multiControl(rec, mic):
         utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         if choice == '1':
@@ -119,6 +128,7 @@ def multiControl(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \

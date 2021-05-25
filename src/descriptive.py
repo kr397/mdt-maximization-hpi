@@ -3,7 +3,9 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleDescriptive(rec, mic):
+def simpleDescriptive(id, rec, mic):
+    utils.log(id, "S1: Descriptive Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -18,6 +20,7 @@ def simpleDescriptive(rec, mic):
     text = "Here is the music titled River Flows In You by Yiruma"
     utils.speak( text )
     utils.play( 'music-files/1_Simple_01_River\ Flows\ In\ You.mp3', 0, 30 )
+    utils.log(id, "Playing: River Flows In You")
 
     # Check
     text = 'Do you want to continue this music?'
@@ -28,6 +31,7 @@ def simpleDescriptive(rec, mic):
         utils.speak( "I'm sorry, I did not catch that.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_01_River\ Flows\ In\ You.mp3', 30, 60 )
@@ -43,6 +47,7 @@ def simpleDescriptive(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
@@ -56,7 +61,8 @@ def simpleDescriptive(rec, mic):
         command = utils.recognize( rec, mic)
 
 
-def multiDescriptive(rec, mic):
+def multiDescriptive(id, rec, mic):
+    utils.log(id, "M2: Descriptive Condition")
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -78,6 +84,7 @@ def multiDescriptive(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
+    utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: When The Love Falls by Yiruma")
         utils.speak("Okay, playing 1.")
@@ -100,6 +107,7 @@ def multiDescriptive(rec, mic):
         utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         if choice == '1':
@@ -120,6 +128,7 @@ def multiDescriptive(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \

@@ -51,7 +51,7 @@ def main():
 
     if ( len(done_l) == 0 ):
         utils.speak("Simple Choice Task. Practice Round.")
-        simplePractice(rec, mic)
+        simplePractice(p_id, rec, mic)
     elif ( len(done_l) < 4 ) :
         text = 'Please say you are ready when you want to move to the next part.'
         utils.speak( text )

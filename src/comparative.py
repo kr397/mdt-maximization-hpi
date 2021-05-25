@@ -3,7 +3,9 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleComparative(rec, mic):
+def simpleComparative(id, rec, mic):
+    utils.log(id, "S3: Comparative Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -19,6 +21,7 @@ def simpleComparative(rec, mic):
             today's streams is 7,996,867."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 0, 30 )
+    utils.log(id, "Playing: Kiss The Rain")
 
     # Check
     text = 'Do you want to continue this music?'
@@ -29,6 +32,7 @@ def simpleComparative(rec, mic):
         utils.speak( "I'm sorry, I did not catch that.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 30, 60 )
@@ -44,6 +48,7 @@ def simpleComparative(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
@@ -56,7 +61,9 @@ def simpleComparative(rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
-def multiComparative(rec, mic):
+def multiComparative(id, rec, mic):
+    utils.log(id, "M3: Comparative Condition")
+
     # Introduction
     text = "Okay, how can I help you?"
     utils.speak( text )
@@ -78,6 +85,7 @@ def multiComparative(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
+    utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: It's Your Day by Yiruma")
         utils.speak("Okay, playing 1.")
@@ -100,6 +108,7 @@ def multiComparative(rec, mic):
         utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
         if choice == '1':
@@ -120,6 +129,7 @@ def multiComparative(rec, mic):
         utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \

@@ -50,7 +50,7 @@ def main():
     utils.log(p_id, "SIMPLE CHOICE TASK")
 
     if ( len(done_l) == 0 ):
-        utils.speak("Simple Choice Task. Practice Round.")
+        utils.speak("Phase 1. Practice Round.")
         simplePractice(p_id, rec, mic)
     elif ( len(done_l) < 4 ) :
         text = 'Please say you are ready when you want to move to the next part.'
@@ -82,7 +82,7 @@ def main():
 
     print("MULTIPLE CHOICE TASK")
     if  ( len(done_l) < 5 ):
-        utils.speak("Multiple Choice Task. Practice Round.")
+        utils.speak("Phase 2. Practice Round.")
         multiPractice(rec, mic)
     
     # Iterate over the list to execute different simple choice conditions

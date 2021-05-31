@@ -67,38 +67,38 @@ def main():
         print(i)
         if i == 'S1' and not 'S1' in done_l:
             print("S1: Control Condition")
-            simpleControl(rec, mic)
+            simpleControl(p_id, rec, mic)
         elif i == 'S2' and not 'S2' in done_l:
             print("S2: Descriptive Condition")
-            simpleDescriptive(rec, mic)
+            simpleDescriptive(p_id, rec, mic)
         elif i == 'S3' and not 'S3' in done_l:
             print("S3: Comparative Condition")
-            simpleComparative(rec, mic)
+            simpleComparative(p_id, rec, mic)
         elif i == 'S4' and not 'S4' in done_l:
             print("S4: Imagery Condition")
-            simpleImagery(rec, mic)
+            simpleImagery(p_id, rec, mic)
     
     ### MULTIPLE CHOICE TASK
 
     print("MULTIPLE CHOICE TASK")
     if  ( len(done_l) < 5 ):
         utils.speak("Phase 2. Practice Round.")
-        multiPractice(rec, mic)
+        multiPractice(p_id, rec, mic)
     
     # Iterate over the list to execute different simple choice conditions
     for i in mcond_l:
-        if i is 'M1' and not 'M1' in done_l:
+        if i == 'M1' and not 'M1' in done_l:
             print("M1: Control Condition")
-            multiControl(rec, mic)
-        elif i is 'M2' and not 'M2' in done_l:
+            multiControl(p_id, rec, mic)
+        elif i == 'M2' and not 'M2' in done_l:
             print("M2: Descriptive Condition")
-            multiDescriptive(rec, mic)
-        elif i is 'M3' and not 'M3' in done_l:
+            multiDescriptive(p_id, rec, mic)
+        elif i == 'M3' and not 'M3' in done_l:
             print("M3: Comparative Condition")
-            multiComparative(rec, mic)
-        elif i is 'M4' and not 'M4' in done_l:
+            multiComparative(p_id, rec, mic)
+        elif i == 'M4' and not 'M4' in done_l:
             print("M4: Imagery Condition")
-            multiImagery(rec, mic)
+            multiImagery(p_id, rec, mic)
 
 try:
     main()

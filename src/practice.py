@@ -38,7 +38,7 @@ def simplePractice(id, rec, mic):
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
-        utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 0, 30 )
+        utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 30, 60 )
 
     # Satisfaction
     text = 'How much were you satisfied with the music? Please rate \

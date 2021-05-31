@@ -3,7 +3,7 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleImagery(rec, mic):
+def simpleImagery(id, rec, mic):
     utils.log(id, "S4: Imagery Condition")
 
     # Introduction

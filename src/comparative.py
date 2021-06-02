@@ -3,7 +3,8 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleComparative(id, rec, mic):
+def simpleComparative(id, rec, mic, num):
+    log = {'simple-choice-' + str(num): 'Comparative Condition'}
     utils.log(id, "S3: Comparative Condition")
 
     # Introduction
@@ -29,6 +30,7 @@ def simpleComparative(id, rec, mic):
     # Check
     text = 'Do you want to continue this music?'
     utils.speak( text )
+    start_time = time.time()
     command = utils.recognize( rec, mic )
     
     while not ('yes' in command or 'no' in command):
@@ -38,7 +40,10 @@ def simpleComparative(id, rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
-    utils.log(id, "Continue?: " + command)
+    continued_time = time.time() - start_time
+    utils.log(id, "Continue?: " + command )
+    log['continued-' + str(num)] = command
+    log['continued-time' + str(num)] = str(continued_time)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 30, 60 )
@@ -48,6 +53,7 @@ def simpleComparative(id, rec, mic):
         your overall satisfaction with your experience on this music \
         recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
     utils.speak( text )
+    start_time = time.time()
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -56,8 +62,11 @@ def simpleComparative(id, rec, mic):
         else:
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
+    sat_time = time.time() - start_time
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
+    log['satisfaction' + str(num)] = sat
+    log['satisfaction-time' + str(num)] = sat_time
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
@@ -69,6 +78,8 @@ def simpleComparative(id, rec, mic):
         if (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
+    
+    return log
 
 def multiComparative(id, rec, mic):
     utils.log(id, "M3: Comparative Condition")

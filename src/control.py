@@ -82,8 +82,9 @@ def simpleControl(id, rec, mic, num):
 
     return log
 
-def multiControl(id, rec, mic):
+def multiControl(id, rec, mic, num):
     utils.log(id, "M1: Control Condition")
+    log = {'multiple-choice-' + str(num): 'Control Condition'}
 
     # Introduction
     text = "Okay, how can I help you?"
@@ -101,6 +102,7 @@ def multiControl(id, rec, mic):
     # Recommend music, give choices
     text = "Here are 3 music recommendations for you from Spotify. Which music do you wish to listen to? 1, 2, or 3?"
     utils.speak( text )
+    start_time = time.time()
 
     choice = utils.recognize( rec, mic )
     while choice not in ['1', '2', '3']:
@@ -110,6 +112,9 @@ def multiControl(id, rec, mic):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
+    choice_time = time.time() - start_time
+    log['choice-' + str(num)] = choice
+    log['choice-time-' + str(num)]
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Indigo by Yiruma")
@@ -127,8 +132,9 @@ def multiControl(id, rec, mic):
     # Check
     text = 'Do you want to continue this music?'
     utils.speak( text )
-    command = utils.recognize( rec, mic )
+    start_time = time.time()
 
+    command = utils.recognize( rec, mic )
     while not ('yes' in command or 'no' in command):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
@@ -136,6 +142,9 @@ def multiControl(id, rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
+    continued_time = time.time() - start_time
+    log['continued-' + str(num)] = command
+    log['continued-time' + str(num)] = str(continued_time)
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
@@ -151,6 +160,7 @@ def multiControl(id, rec, mic):
         your overall satisfaction with your experience on this music \
         recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
     utils.speak( text )
+    start_time = time.time()
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -161,6 +171,8 @@ def multiControl(id, rec, mic):
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
+    log['satisfaction' + str(num)] = sat
+    log['satisfaction-time' + str(num)] = sat_time
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
@@ -172,3 +184,5 @@ def multiControl(id, rec, mic):
         if (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
+
+    return log

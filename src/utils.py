@@ -54,6 +54,6 @@ def log( id, text ):
     file_.close()
 
 def csvSimple( log ):
-    with open('log/participant-log-simple.csv', mode='a') as csv_:
+    with open('logs/participant-log-simple.csv', mode='a') as csv_:
         writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer_.writerow(list(log.values()))

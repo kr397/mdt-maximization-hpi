@@ -48,9 +48,10 @@ def main():
 
     print("SIMPLE CHOICE TASK")
     utils.log(p_id, "SIMPLE CHOICE TASK")
+    simple_log = {'participant-id': p_id}
 
     if ( len(done_l) == 0 ):
-        utils.speak("Simple Choice Task. Practice Round.")
+        utils.speak("Phase 1. Practice Round.")
         simplePractice(p_id, rec, mic)
     elif ( len(done_l) < 4 ) :
         text = 'Please say you are ready when you want to move to the next part.'
@@ -63,28 +64,40 @@ def main():
             command = utils.recognize( rec, mic)
 
     # Iterate over the list to execute different simple choice conditions
+    num = len(done_l) + 1
     for i in scond_l:
         print(i)
         if i == 'S1' and not 'S1' in done_l:
             print("S1: Control Condition")
-            simpleControl(p_id, rec, mic)
+            log = simpleControl(p_id, rec, mic, num)
+            simple_log.update(log)
+            num += 1
         elif i == 'S2' and not 'S2' in done_l:
             print("S2: Descriptive Condition")
-            simpleDescriptive(p_id, rec, mic)
+            log = simpleDescriptive(p_id, rec, mic, num)
+            simple_log.update(log)
+            num += 1
         elif i == 'S3' and not 'S3' in done_l:
             print("S3: Comparative Condition")
-            simpleComparative(p_id, rec, mic)
+            log = simpleComparative(p_id, rec, mic, num)
+            simple_log.update(log)
+            num += 1
         elif i == 'S4' and not 'S4' in done_l:
             print("S4: Imagery Condition")
-            simpleImagery(p_id, rec, mic)
+            log = simpleImagery(p_id, rec, mic, num)
+            simple_log.update(log)
+            num += 1
     
+
+    # Add simple log to csv
+    utils.csvSimple(simple_log)
+
     ### MULTIPLE CHOICE TASK
 
     print("MULTIPLE CHOICE TASK")
     if  ( len(done_l) < 5 ):
-        utils.speak("Multiple Choice Task. Practice Round.")
+        utils.speak("Phase 2. Practice Round.")
         multiPractice(p_id, rec, mic)
-    # Add "ready" if starting after practice round
     
     # Iterate over the list to execute different simple choice conditions
     for i in mcond_l:

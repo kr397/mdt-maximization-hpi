@@ -3,6 +3,7 @@ import speech_recognition as sr
 from record import RecordAudio
 import speech
 import time
+import csv
 
 speech_key = {
     'do': '2',
@@ -51,3 +52,8 @@ def log( id, text ):
     text = '[' + str(current_time.tm_hour) + ":" + str(current_time.tm_sec) + '] ' + text + '\n'
     file_.write(text)
     file_.close()
+
+def csvSimple( log ):
+    with open('log/participant-log-simple.csv', mode='a') as csv_:
+        writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer_.writerow(list(log.values()))

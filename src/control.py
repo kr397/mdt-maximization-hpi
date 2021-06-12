@@ -172,6 +172,7 @@ def multiControl(id, rec, mic):
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
+    sat_time = time.time() - start_time
     log['satisfaction'] = sat
     log['satisfaction-time'] = str(sat_time)
 

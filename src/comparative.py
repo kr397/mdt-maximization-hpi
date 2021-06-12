@@ -171,6 +171,7 @@ def multiComparative(id, rec, mic):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
+    sat_time = time.time() - start_time
     utils.log(id, "Satisfaction: " + sat)
     log['satisfaction'] = sat
     log['satisfaction-time'] = str(sat_time)

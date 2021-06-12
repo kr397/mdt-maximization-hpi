@@ -146,7 +146,7 @@ def multiPractice(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
-    text = 'Thank for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
 

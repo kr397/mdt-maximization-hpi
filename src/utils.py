@@ -57,9 +57,9 @@ def log( id, text ):
 def csvSimple( log ):
     with open('logs/participant-log-simple.csv', mode='a') as csv_:
         writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        writer_.writerow(list(log.values()))
+        writer_.writerow(log)
 
 def csvMulti( log ):
     with open('logs/participant-log-multi.csv', mode='a') as csv_:
         writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        writer_.writerow(list(log.values()))
+        writer_.writerow(log)

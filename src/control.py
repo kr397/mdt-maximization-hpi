@@ -5,7 +5,8 @@ import speech
 import utils
 
 def simpleControl(id, rec, mic):
-    log = {'participant-id':id, 'simple-choice': 'Control Condition'}
+    log = [id, 'Control Condition']
+    # log = {'participant-id':id, 'simple-choice': 'Control Condition'}
     utils.log( id, "S1: Control Condition")
 
     # Introduction
@@ -42,8 +43,10 @@ def simpleControl(id, rec, mic):
 
     continued_time = time.time() - start_time
     utils.log(id, "Continue?: " + command )
-    log['continued'] = command
-    log['continued-time'] = str(continued_time)
+    log.append(command)
+    log.append(str(continued_time))
+    # log['continued'] = command
+    # log['continued-time'] = str(continued_time)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_04_Love\ Me.mp3', 30, 60 )
@@ -66,8 +69,10 @@ def simpleControl(id, rec, mic):
     sat_time = time.time() - start_time
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
-    log['satisfaction'] = sat
-    log['satisfaction-time'] = str(sat_time)
+    log.append(sat)
+    log.append(str(sat_time))
+    # log['satisfaction'] = sat
+    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
@@ -85,7 +90,8 @@ def simpleControl(id, rec, mic):
 
 def multiControl(id, rec, mic):
     utils.log(id, "M1: Control Condition")
-    log = {'participant-id':id, 'multiple-choice': 'Control Condition'}
+    log = [id, 'Control Condition']
+    # log = {'participant-id':id, 'multiple-choice': 'Control Condition'}
 
     # Introduction
     text = "Okay, how can I help you?"
@@ -114,8 +120,10 @@ def multiControl(id, rec, mic):
         choice = utils.recognize( rec, mic )
 
     choice_time = time.time() - start_time
-    log['choice'] = choice
-    log['choice-time'] = str(choice_time)
+    log.append(choice)
+    log.append(str(choice_time))
+    # log['choice'] = choice
+    # log['choice-time'] = str(choice_time)
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Indigo by Yiruma")
@@ -144,8 +152,10 @@ def multiControl(id, rec, mic):
         command = utils.recognize( rec, mic )
 
     continued_time = time.time() - start_time
-    log['continued'] = command
-    log['continued-time'] = str(continued_time)
+    log.append(command)
+    log.append(str(continued_time))
+    # log['continued'] = command
+    # log['continued-time'] = str(continued_time)
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
@@ -173,8 +183,10 @@ def multiControl(id, rec, mic):
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
     sat_time = time.time() - start_time
-    log['satisfaction'] = sat
-    log['satisfaction-time'] = str(sat_time)
+    log.append(sat)
+    log.append(str(sat_time))
+    # log['satisfaction'] = sat
+    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \

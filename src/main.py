@@ -100,6 +100,7 @@ def main():
             print("M4: Imagery Condition")
             multiImagery(p_id, rec, mic)
 
+    utils.speak("Please wait for further instructions. Thank you and have a nice day!")
 try:
     main()
 except KeyboardInterrupt:

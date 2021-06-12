@@ -49,7 +49,7 @@ def simpleControl(id, rec, mic):
         utils.play( 'music-files/1_Simple_04_Love\ Me.mp3', 30, 60 )
         
     # Satisfaction
-    text = 'How much were you satisfied with the music? Please rate \
+    text = 'How much were you satisfied with the music recommendation? Please rate \
         your overall satisfaction with your experience on this music \
         recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
     utils.speak( text )
@@ -157,7 +157,7 @@ def multiControl(id, rec, mic):
             utils.play( 'music-files/2_Multiple_04_03_Yellow\ Room.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music? Please rate \
+    text = 'How much were you satisfied with the music recommendation? Please rate \
         your overall satisfaction with your experience on this music \
         recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
     utils.speak( text )
@@ -177,7 +177,7 @@ def multiControl(id, rec, mic):
     log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
 

@@ -27,7 +27,8 @@ def speak( text ):
 
 def play( music, start, stop ):
     print('[Playing] ' + music)
-    cmd = 'cvlc --play-and-exit --gain 7 ' + music + " --start-time=" + str(start) + " --stop-time=" + str(stop)
+    cmd = 'mplayer -ss ' + str(start) + ' -endpos ' + str(stop) + ' ' + music
+    # cmd = 'cvlc --play-and-exit --gain 7 ' + music + " --start-time=" + str(start) + " --stop-time=" + str(stop)
     # cmd = 'omxplayer --no-keys -o local ' + music
     subprocess.check_output(cmd, shell=True)
 
@@ -55,5 +56,10 @@ def log( id, text ):
 
 def csvSimple( log ):
     with open('logs/participant-log-simple.csv', mode='a') as csv_:
+        writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer_.writerow(list(log.values()))
+
+def csvMulti( log ):
+    with open('logs/participant-log-multi.csv', mode='a') as csv_:
         writer_ = csv.writer(csv_, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer_.writerow(list(log.values()))

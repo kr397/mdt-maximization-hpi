@@ -13,7 +13,7 @@ def simplePractice(id, rec, mic):
     while not ('recommend' in command):
         if ('repeat' in command):
             utils.speak("Welcome. Please give a command.")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
@@ -31,7 +31,7 @@ def simplePractice(id, rec, mic):
     while not ('yes' in command or 'no' in command):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
@@ -50,7 +50,7 @@ def simplePractice(id, rec, mic):
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
             utils.speak( text )
-        else:
+        elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
@@ -69,7 +69,7 @@ def simplePractice(id, rec, mic):
 
 def multiPractice(id, rec, mic):
     utils.log(id, "M0: Practice Task")
-    utils.speak("Welcome. Please give a command.")
+    utils.speak("Okay ,how can I help you?")
 
     # Practice round
     # Wait for the recommend command
@@ -77,7 +77,7 @@ def multiPractice(id, rec, mic):
     while not ('recommend' in command):
         if ('repeat' in command):
             utils.speak("Welcome. Please give a command.")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
@@ -89,7 +89,7 @@ def multiPractice(id, rec, mic):
     while choice not in ['1', '2', '3']:
         if ('repeat' in choice):
             utils.speak(text)
-        else:
+        elif (not choice == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
@@ -115,7 +115,7 @@ def multiPractice(id, rec, mic):
     while not ('yes' in command or 'no' in command):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
@@ -125,9 +125,9 @@ def multiPractice(id, rec, mic):
         if choice == '1':
             utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
         elif choice == '2':
-            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 30 )
+            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
         elif choice == '3':
-            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 30 )
+            utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
 
     # Satisfaction
     text = 'How much were you satisfied with the music? Please rate \
@@ -139,7 +139,7 @@ def multiPractice(id, rec, mic):
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
             utils.speak( text )
-        else:
+        elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)

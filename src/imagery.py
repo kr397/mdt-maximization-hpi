@@ -4,8 +4,8 @@ from record import RecordAudio
 import speech
 import utils
 
-def simpleImagery(id, rec, mic, num):
-    log = {'simple-choice-' + str(num): 'Imagery Condition'}
+def simpleImagery(id, rec, mic):
+    log = {'participant-id':id, 'simple-choice': 'Imagery Condition'}
     utils.log(id, "S4: Imagery Condition")
 
     # Introduction
@@ -17,7 +17,7 @@ def simpleImagery(id, rec, mic, num):
     while not ('recommend' in command):
         if ('repeat' in command):
             utils.speak("Welcome. Please give a command.")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
     
@@ -36,14 +36,14 @@ def simpleImagery(id, rec, mic, num):
     while not ('yes' in command or 'no' in command):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
     continued_time = time.time() - start_time
     utils.log(id, "Continue?: " + command )
-    log['continued-' + str(num)] = command
-    log['continued-time' + str(num)] = str(continued_time)
+    log['continued'] = command
+    log['continued-time'] = str(continued_time)
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_03_May\ Be.mp3', 0, 30 )
@@ -59,14 +59,14 @@ def simpleImagery(id, rec, mic, num):
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
             utils.speak( text )
-        else:
+        elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     sat_time = time.time() - start_time
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
-    log['satisfaction' + str(num)] = sat
-    log['satisfaction-time' + str(num)] = sat_time
+    log['satisfaction'] = sat
+    log['satisfaction-time'] = str(sat_time)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
@@ -79,11 +79,12 @@ def simpleImagery(id, rec, mic, num):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
     
-    return log
+    # Add log to CSV
+    utils.csvSimple(log)
 
 def multiImagery(id, rec, mic):
     utils.log(id, "M4: Imagery Condition")
-    log = {'multiple-choice-' + str(num): 'Imagery Condition'}
+    log = {'participant-id':id, 'multiple-choice':'Imagery Condition'}
 
     # Introduction
     text = "Okay, how can I help you?"
@@ -94,7 +95,7 @@ def multiImagery(id, rec, mic):
     while not ('recommend' in command):
         if ('repeat' in command):
             utils.speak("Welcome. Please give a command.")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
@@ -107,13 +108,13 @@ def multiImagery(id, rec, mic):
     while choice not in ['1', '2', '3']:
         if ('repeat' in choice):
             utils.speak(text)
-        else:
+        elif (not choice == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
 
     choice_time = time.time() - start_time
-    log['choice-' + str(num)] = choice
-    log['choice-time-' + str(num)]
+    log['choice'] = choice
+    log['choice-time'] = str(choice_time)
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Hope by Yiruma")
@@ -137,13 +138,13 @@ def multiImagery(id, rec, mic):
     while not ('yes' in command or 'no' in command):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
-        else:
+        elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again.")
         command = utils.recognize( rec, mic )
 
     continued_time = time.time() - start_time
-    log['continued-' + str(num)] = command
-    log['continued-time' + str(num)] = str(continued_time)
+    log['continued'] = command
+    log['continued-time'] = str(continued_time)
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
@@ -165,13 +166,13 @@ def multiImagery(id, rec, mic):
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
             utils.speak( text )
-        else:
+        elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
-    log['satisfaction' + str(num)] = sat
-    log['satisfaction-time' + str(num)] = sat_time
+    log['satisfaction'] = sat
+    log['satisfaction-time'] = str(sat_time)
 
     # End instructions
     text = 'Thank you for the feedback. Please fill out the survey on the laptop clicking the next button, and \
@@ -184,4 +185,5 @@ def multiImagery(id, rec, mic):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
     
-    return log
+    # Add log to CSV
+    utils.csvMulti(log)

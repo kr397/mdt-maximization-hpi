@@ -48,7 +48,6 @@ def main():
 
     print("SIMPLE CHOICE TASK")
     utils.log(p_id, "SIMPLE CHOICE TASK")
-    simple_log = {'participant-id': p_id}
 
     if ( len(done_l) == 0 ):
         utils.speak("Phase 1. Practice Round.")
@@ -64,33 +63,20 @@ def main():
             command = utils.recognize( rec, mic)
 
     # Iterate over the list to execute different simple choice conditions
-    num = len(done_l) + 1
     for i in scond_l:
         print(i)
         if i == 'S1' and not 'S1' in done_l:
             print("S1: Control Condition")
-            log = simpleControl(p_id, rec, mic, num)
-            simple_log.update(log)
-            num += 1
+            simpleControl(p_id, rec, mic)
         elif i == 'S2' and not 'S2' in done_l:
             print("S2: Descriptive Condition")
-            log = simpleDescriptive(p_id, rec, mic, num)
-            simple_log.update(log)
-            num += 1
+            simpleDescriptive(p_id, rec, mic)
         elif i == 'S3' and not 'S3' in done_l:
             print("S3: Comparative Condition")
-            log = simpleComparative(p_id, rec, mic, num)
-            simple_log.update(log)
-            num += 1
+            simpleComparative(p_id, rec, mic)
         elif i == 'S4' and not 'S4' in done_l:
             print("S4: Imagery Condition")
-            log = simpleImagery(p_id, rec, mic, num)
-            simple_log.update(log)
-            num += 1
-    
-
-    # Add simple log to csv
-    utils.csvSimple(simple_log)
+            simpleImagery(p_id, rec, mic, num)
 
     ### MULTIPLE CHOICE TASK
 

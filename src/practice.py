@@ -5,7 +5,7 @@ import utils
 
 def simplePractice(id, rec, mic):
     utils.log(id, "S0: Practice Task")
-    utils.speak("Welcome. Please give a command.")
+    utils.speak("Hello, how can I help you?")
 
     # Practice round
     # Wait for the recommend command

@@ -1,0 +1,51 @@
+[12:42] SIMPLE CHOICE TASK
+[12:47] S0: Practice Task
+[12:36] Playing: Room With A View
+[12:46] Continue?: yes
+[12:11] Satisfaction: 3
+[12:28] S1: Control Condition
+[12:17] Playing: Love Me
+[12:27] Continue?: no
+[12:49] Satisfaction: 6
+[12:35] S3: Comparative Condition
+[12:32] Playing: Kiss The Rain
+[12:51] Continue?: no
+[12:14] Satisfaction: 5
+[12:32] S1: Descriptive Condition
+[12:21] Playing: River Flows In You
+[12:50] Continue?: no
+[12:13] Satisfaction: 1
+[12:23] SIMPLE CHOICE TASK
+[12:44] S4: Imagery Condition
+[12:45] Playing: May Be
+[12:54] Continue?: no
+[12:17] Satisfaction: 4
+[12:40] M0: Practice Task
+[12:11] Choice: 1
+[12:0] Continue?: yes
+[12:25] Satisfaction: 1
+[12:42] M3: Comparative Condition
+[12:9] Choice: 2
+[12:56] Continue?: no
+[12:18] Satisfaction: 1
+[12:23] SIMPLE CHOICE TASK
+[12:28] M0: Practice Task
+[12:54] Choice: 3
+[12:43] Continue?: no
+[12:5] Satisfaction: 7
+[12:22] M4: Imagery Condition
+[12:48] Choice: 2
+[12:36] Continue?: yes
+[12:31] Satisfaction: 3
+[12:49] M1: Control Condition
+[12:27] Choice: 1
+[12:15] Continue?: no
+[12:38] Satisfaction: 2
+[12:54] M2: Descriptive Condition
+[12:10] Choice: 1
+[12:57] Continue?: yes
+[12:23] Satisfaction: 7
+[12:40] M3: Comparative Condition
+[12:57] Choice: 3
+[12:44] Continue?: no
+[12:7] Satisfaction: 4

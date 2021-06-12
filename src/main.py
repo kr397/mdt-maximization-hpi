@@ -76,7 +76,7 @@ def main():
             simpleComparative(p_id, rec, mic)
         elif i == 'S4' and not 'S4' in done_l:
             print("S4: Imagery Condition")
-            simpleImagery(p_id, rec, mic, num)
+            simpleImagery(p_id, rec, mic)
 
     ### MULTIPLE CHOICE TASK
 

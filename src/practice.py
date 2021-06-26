@@ -41,9 +41,7 @@ def simplePractice(id, rec, mic):
         utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate \
-        your overall satisfaction with your experience on this music \
-        recommendation. From one, completely dissatisfied. To seven completely satisfied.' 
+    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven completely satisfied.' 
     utils.speak( text )
     sat = utils.recognize( rec, mic )
     

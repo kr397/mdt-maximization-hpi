@@ -17,7 +17,7 @@ def simpleImagery(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ('recommend' in command):
         if ('repeat' in command):
-            utils.speak("Welcome. Please give a command.")
+            utils.speak("Okay, how can I help you?")
         elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
@@ -99,7 +99,7 @@ def multiImagery(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ('recommend' in command):
         if ('repeat' in command):
-            utils.speak("Welcome. Please give a command.")
+            utils.speak("Okay, how can I help you?")
         elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)

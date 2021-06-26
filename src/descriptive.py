@@ -52,10 +52,9 @@ def simpleDescriptive(id, rec, mic):
         utils.play( 'music-files/1_Simple_01_River\ Flows\ In\ You.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate \
-        your overall satisfaction with your experience on this music \
-        recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
+    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
     utils.speak( text )
+    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
     sat = utils.recognize( rec, mic )
     
@@ -169,10 +168,9 @@ def multiDescriptive(id, rec, mic):
             utils.play( 'music-files/2_Multiple_01_02_Fairy\ Tale.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate \
-        your overall satisfaction with your experience on this music \
-        recommendation. From one, completely dissatisfied. To seven, completely satisfied.'
+    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
     utils.speak( text )
+    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
 
     sat = utils.recognize( rec, mic )

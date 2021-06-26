@@ -12,7 +12,7 @@ def simplePractice(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ('recommend' in command):
         if ('repeat' in command):
-            utils.speak("Welcome. Please give a command.")
+            utils.speak("Hello, how can I help you?")
         elif (not command == ''):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
@@ -129,10 +129,9 @@ def multiPractice(id, rec, mic):
             utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate \
-        your overall satisfaction with your experience on this music \
-        recommendation. From one, completely dissatisfied. To seven completely satisfied.' 
+    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
     utils.speak( text )
+    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:

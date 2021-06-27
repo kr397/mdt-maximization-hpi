@@ -17,6 +17,10 @@ speech_key = {
     'Zebulon': '7',
     'Kevin': '7',
     'Devin': '7', 
+    'sweet': '3',
+    'I\'m already': 'I\'m ready',
+    'already': 'ready',
+    'Siri': '3'
 }
 
 def speak( text ):

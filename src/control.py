@@ -60,7 +60,9 @@ def simpleControl(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
+            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
             utils.speak( text )
+            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -80,7 +82,11 @@ def simpleControl(id, rec, mic):
     
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
-        if (not command == ""):
+        if ("repeat" in command):
+            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+say you are ready when you want to move to the next part.'
+            utils.speak( text )
+        elif (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
 
@@ -126,15 +132,15 @@ def multiControl(id, rec, mic):
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Indigo by Yiruma")
-        utils.speak("Okay, playing Indigo by Yiruma")
+        utils.speak("Okay, playing music titled Indigo by Yiruma")
         utils.play( 'music-files/2_Multiple_04_01_Wait\ There.mp3', 0, 30 )
     elif choice == '2':
         print("Choice 2: Wait There by Yiruma")
-        utils.speak("Okay, playing Wait There by Yiruma")
+        utils.speak("Okay, playing music titled Wait There by Yiruma")
         utils.play( 'music-files/2_Multiple_04_02_Indigo.mp3', 0, 30 )
     elif choice == '3':
         print("Choice 3: Yellow Room by Yiruma")
-        utils.speak("Okay, playing Yellow Room by Yiruma")
+        utils.speak("Okay, playing music titled Yellow Room by Yiruma")
         utils.play( 'music-files/2_Multiple_04_03_Yellow\ Room.mp3', 0, 30 )
 
     # Check
@@ -174,7 +180,9 @@ def multiControl(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
+            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
             utils.speak( text )
+            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -193,6 +201,10 @@ def multiControl(id, rec, mic):
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
+        if ("repeat" in command):
+            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+say you are ready when you want to move to the next part.'
+            utils.speak( text )
         if (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)

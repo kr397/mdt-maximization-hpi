@@ -60,7 +60,9 @@ def simpleImagery(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
+            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
             utils.speak( text )
+            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -79,7 +81,11 @@ def simpleImagery(id, rec, mic):
     
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
-        if (not command == ""):
+        if ("repeat" in command):
+            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+say you are ready when you want to move to the next part.'
+            utils.speak( text )
+        elif (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
     
@@ -114,7 +120,10 @@ def multiImagery(id, rec, mic):
     choice = utils.recognize( rec, mic )
     while choice not in ['1', '2', '3']:
         if ('repeat' in choice):
-            utils.speak(text)
+            text = "Here are 3 music recommendations for you. The first one is front porch piano music. \
+The second is cozy coffee piano music. And the last one is sweater weather music content."
+            utils.speak( text )
+            utils.speak("Which music do you wish to listen to? 1, 2, or 3?")
         elif (not choice == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         choice = utils.recognize( rec, mic )
@@ -127,15 +136,15 @@ def multiImagery(id, rec, mic):
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Hope by Yiruma")
-        utils.speak("Okay, playing Hope by Yiruma.")
+        utils.speak("Okay, playing music titled Hope by Yiruma.")
         utils.play( 'music-files/2_Multiple_03_01_Hope.mp3', 0, 30 )
     elif choice == '2':
         print("Choice 2: Painted by Yiruma")
-        utils.speak("Okay, playing Painted by Yiruma.")
+        utils.speak("Okay, playing music titled Painted by Yiruma.")
         utils.play( 'music-files/2_Multiple_03_02_Painted.mp3', 0, 30 )
     elif choice == '3':
         print("Choice 3: Sky by Yiruma")
-        utils.speak("Okay, playing Sky by Yiruma.")
+        utils.speak("Okay, playing music titled Sky by Yiruma.")
         utils.play( 'music-files/2_Multiple_03_03_Sky.mp3', 0, 30 )
 
     # Check
@@ -175,7 +184,9 @@ def multiImagery(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
+            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
             utils.speak( text )
+            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -194,7 +205,11 @@ def multiImagery(id, rec, mic):
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
-        if (not command == ""):
+        if ("repeat" in command):
+            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+say you are ready when you want to move to the next part.'
+            utils.speak( text )    
+        elif (not command == ""):
             utils.speak( "I'm sorry, I did not catch that. Please speak again." )
         command = utils.recognize( rec, mic)
     

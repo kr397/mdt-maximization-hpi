@@ -15,7 +15,7 @@ def simpleDescriptive(id, rec, mic):
 
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
@@ -52,17 +52,15 @@ def simpleDescriptive(id, rec, mic):
         utils.play( 'music-files/1_Simple_01_River\ Flows\ In\ You.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+            text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
-            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -75,14 +73,16 @@ def simpleDescriptive(id, rec, mic):
     # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+
+    time.sleep(210)
     
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
@@ -104,7 +104,7 @@ def multiDescriptive(id, rec, mic):
 
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
@@ -113,9 +113,9 @@ def multiDescriptive(id, rec, mic):
 
     # Recommend music, give choices
     text = "Here are 3 music recommendations for you. The first one is piano music titled When the Love Falls. \
-        The second is called Because I Love you. And the last one is music titled Fairy Tale."
+        The second is called Because I Love you."
     utils.speak( text )
-    utils.speak("Which music do you wish to listen to? 1, 2, or 3?")
+    utils.speak("And the last one is music titled Fairy Tale. Which music do you wish to listen to? 1, 2, or 3?")
     start_time = time.time()
 
     choice = utils.recognize( rec, mic )
@@ -146,7 +146,7 @@ The second is called Because I Love you. And the last one is music titled Fairy 
     elif choice == '3':
         print("Choice 3: Fairy Tale by Yiruma")
         utils.speak("Okay, playing music titled Fairy Tale by Yiruma.")
-        utils.play( 'music-files/2_Multiple_01_02_Fairy\ Tale.mp3', 0, 30 )
+        utils.play( 'music-files/2_Multiple_01_03_Fairy\ Tale.mp3', 0, 30 )
 
     # Check
     text = 'Do you want to continue this music?'
@@ -177,17 +177,15 @@ The second is called Because I Love you. And the last one is music titled Fairy 
             utils.play( 'music-files/2_Multiple_01_02_Fairy\ Tale.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
 
     sat = utils.recognize( rec, mic )
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+            text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
-            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -200,14 +198,16 @@ The second is called Because I Love you. And the last one is music titled Fairy 
     # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+
+    time.sleep(210)
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):

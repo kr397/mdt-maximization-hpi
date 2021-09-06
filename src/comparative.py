@@ -15,7 +15,7 @@ def simpleComparative(id, rec, mic):
 
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
@@ -24,7 +24,7 @@ def simpleComparative(id, rec, mic):
     
     # Recommend music
     text = "Here is the piano music played most in your location. The number of \
-            today's streams is 7,996,867."
+            today's streams is 7 point 9 million."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 0, 30 )
     utils.log(id, "Playing: Kiss The Rain")
@@ -53,17 +53,15 @@ def simpleComparative(id, rec, mic):
         utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+            text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
-            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -76,14 +74,16 @@ def simpleComparative(id, rec, mic):
     # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+
+    time.sleep(210)
     
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
@@ -104,7 +104,7 @@ def multiComparative(id, rec, mic):
 
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
@@ -112,11 +112,11 @@ def multiComparative(id, rec, mic):
         command = utils.recognize( rec, mic)
     
     # Recommend music, give choices
-    text = "Here are 3 music recommendations for you. The first one is the piano music played the most today in your location. The number of today's streams is 4,453,602."
+    text = "Here are 3 music recommendations for you. The first one is the piano music played the most today in your location. The number of today's streams is 4 point 4 million."
     utils.speak( text )
-    text = "The second is played most by other users in your age group. The number of today's streams is 1,987,055."
+    text = "The second is played most by other users in your age group. The number of today's streams is 1 point 9 million."
     utils.speak( text )
-    text = "The last one is the piano music played the most by other users in the US. The number of streams is 9,865,329. Which music do you wish to listen to? 1, 2, or 3?"
+    text = "The last one is the piano music played the most by other users in the US. The number of streams is 9 point 2 million. Which music do you wish to listen to? 1, 2, or 3?"
     utils.speak( text )
     start_time = time.time()
 
@@ -181,17 +181,15 @@ def multiComparative(id, rec, mic):
             utils.play( 'music-files/2_Multiple_02_03_Time\ Forgets.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     start_time = time.time()
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-                text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+                text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
                 utils.speak( text )
-                utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
             utils.speak("I'm sorry, I did not catch that. Please speak again.")
         sat = utils.recognize( rec, mic )
@@ -204,14 +202,16 @@ def multiComparative(id, rec, mic):
     # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+
+    time.sleep(210)
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):

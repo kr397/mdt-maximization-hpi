@@ -31,7 +31,7 @@ def speak( text ):
 
 def play( music, start, stop ):
     print('[Playing] ' + music)
-    cmd = 'mplayer -ss ' + str(start) + ' -endpos ' + str(stop) + ' ' + music
+    cmd = 'mplayer -ss ' + str(start) + ' -endpos ' + str(stop-start) + ' ' + music
     # cmd = 'cvlc --play-and-exit --gain 7 ' + music + " --start-time=" + str(start) + " --stop-time=" + str(stop)
     # cmd = 'omxplayer --no-keys -o local ' + music
     subprocess.check_output(cmd, shell=True)

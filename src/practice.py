@@ -10,7 +10,7 @@ def simplePractice(id, rec, mic):
     # Practice round
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Hello, how can I help you?")
         elif (not command == ''):
@@ -18,7 +18,7 @@ def simplePractice(id, rec, mic):
         command = utils.recognize( rec, mic)
 
     # Recommend music
-    text = "Here is piano music from Spotify."
+    text = "Here is piano music."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 0, 30 )
     utils.log(id, "Playing: Room With A View")
@@ -41,9 +41,8 @@ def simplePractice(id, rec, mic):
         utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -58,14 +57,15 @@ def simplePractice(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+    utils.speak('This is the end of the practice round.')
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ('repeat' in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
@@ -79,7 +79,7 @@ def multiPractice(id, rec, mic):
     # Practice round
     # Wait for the recommend command
     command = utils.recognize( rec, mic )
-    while not ('recommend' in command):
+    while not ('recommend' in command or 'play' in command):
         if ('repeat' in command):
             utils.speak("Okay how can I help you?")
         elif (not command == ''):
@@ -87,7 +87,7 @@ def multiPractice(id, rec, mic):
         command = utils.recognize( rec, mic)
 
     # Recommend music, give choices
-    text = "Here are 3 music recommendations for you from Spotify. Which music do you wish to listen to? 1, 2, or 3?"
+    text = "Here are 3 music recommendations for you. Which music do you wish to listen to? 1, 2, or 3?"
     utils.speak( text )
 
     choice = utils.recognize( rec, mic )
@@ -135,9 +135,8 @@ def multiPractice(id, rec, mic):
             utils.play( 'music-files/2_Multiple_00_Practice_Scenery.mp3', 30, 60 )
 
     # Satisfaction
-    text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+    text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
     utils.speak( text )
-    utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
     sat = utils.recognize( rec, mic )
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -152,14 +151,15 @@ def multiPractice(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
             say you are ready when you want to move to the next part.'
     utils.speak( text )
+    utils.speak('This is the end of the practice round.')
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the laptop by clicking the next button, and \
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):

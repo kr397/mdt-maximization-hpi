@@ -1,0 +1,36 @@
+[11:13] SIMPLE CHOICE TASK
+[11:19] S0: Practice Task
+[11:8] Playing: Room With A View
+[11:18] Continue?: yes
+[11:46] Satisfaction: 5
+[11:35] S1: Descriptive Condition
+[11:24] Playing: River Flows In You
+[11:39] Continue?: no
+[11:4] Satisfaction: 3
+[11:27] S1: Control Condition
+[11:15] Playing: Love Me
+[11:25] Continue?: no
+[11:50] Satisfaction: 7
+[11:7] S3: Comparative Condition
+[11:4] Playing: Kiss The Rain
+[11:13] Continue?: no
+[11:39] Satisfaction: 2
+[11:57] S4: Imagery Condition
+[11:46] Playing: May Be
+[11:55] Continue?: no
+[11:33] Satisfaction: 5
+[11:19] M0: Practice Task
+[11:3] Choice: 1
+[11:53] Continue?: no
+[11:43] Satisfaction: 4
+[11:12] M2: Descriptive Condition
+[11:48] Choice: 3
+[11:28] SIMPLE CHOICE TASK
+[11:28] M4: Imagery Condition
+[11:30] Choice: 2
+[11:19] Continue?: no
+[11:44] Satisfaction: 5
+[11:8] M3: Comparative Condition
+[12:14] Choice: 3
+[12:4] Continue?: no
+[12:29] Satisfaction: 6

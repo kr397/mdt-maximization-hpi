@@ -14,11 +14,11 @@ def simplePractice(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Hello, how can I help you?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
 
     # Recommend music
-    text = "Here is piano music."
+    text = "Okay, here is piano music."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_00_Practice_Room\ With\ A\ View.mp3', 0, 30 )
     utils.log(id, "Playing: Room With A View")
@@ -32,7 +32,7 @@ def simplePractice(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again.")
+            utils.speak( "I'm sorry, please speak again.")
         command = utils.recognize( rec, mic )
 
     utils.log(id, "Continue?: " + command)
@@ -47,29 +47,26 @@ def simplePractice(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+            text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
-            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. This is the end of the practice round. Please click the next button on the computer.'
     utils.speak( text )
     utils.speak('This is the end of the practice round.')
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ('repeat' in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. This is the end of the practice round. Please click the next button on the computer.'
             utils.speak( text )
         elif (not command == ""):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
 
 def multiPractice(id, rec, mic):
@@ -83,11 +80,11 @@ def multiPractice(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Okay how can I help you?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
 
     # Recommend music, give choices
-    text = "Here are 3 music recommendations for you. Which music do you wish to listen to? 1, 2, or 3?"
+    text = "Okay, here are 3 music recommendations for you. Which music do you wish to listen to? 1, 2, or 3?"
     utils.speak( text )
 
     choice = utils.recognize( rec, mic )
@@ -95,7 +92,7 @@ def multiPractice(id, rec, mic):
         if ('repeat' in choice):
             utils.speak(text)
         elif (not choice == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         choice = utils.recognize( rec, mic )
 
     utils.log(id, "Choice: " + choice)
@@ -121,7 +118,7 @@ def multiPractice(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again.")
+            utils.speak( "I'm sorry, please speak again.")
         command = utils.recognize( rec, mic )
 
     utils.log(id, "Continue?: " + command)
@@ -141,27 +138,24 @@ def multiPractice(id, rec, mic):
     
     while sat not in ['1', '2', '3', '4', '5', '6', '7']:
         if ('repeat' in sat): 
-            text = 'How much were you satisfied with the music recommendation? Please rate your overall satisfaction with your experience on this music recommendation.' 
+            text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
-            utils.speak('From one, completely dissatisfied. To seven completely satisfied.')
         elif (not sat == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     utils.log(id, "Satisfaction: " + sat)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. This is the end of the practice round. Please click the next button on the computer.'
     utils.speak( text )
     utils.speak('This is the end of the practice round.')
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. This is the end of the practice round. Please click the next button on the computer.'
             utils.speak( text )
         elif (not command == ""):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)

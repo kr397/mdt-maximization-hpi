@@ -19,11 +19,11 @@ def simpleImagery(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
     
     # Recommend music
-    text = "Here is comfortable and cozy piano music."
+    text = "Okay, here is comfortable and cozy piano music."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_03_May\ Be.mp3', 0, 30 )
     utils.log(id, "Playing: May Be")
@@ -38,7 +38,7 @@ def simpleImagery(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again.")
+            utils.speak( "I'm sorry, please speak again.")
         command = utils.recognize( rec, mic )
 
     continued_time = time.time() - start_time
@@ -62,7 +62,7 @@ def simpleImagery(id, rec, mic):
             text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
         elif (not sat == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         sat = utils.recognize( rec, mic )
     sat_time = time.time() - start_time
     print('Satisfaction: ' + sat)
@@ -77,7 +77,7 @@ def simpleImagery(id, rec, mic):
             say you are ready when you want to move to the next part.'
     utils.speak( text )
    
-    time.sleep(210)
+    time.sleep(180)
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
@@ -86,7 +86,7 @@ def simpleImagery(id, rec, mic):
 say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
     
     # Add log to CSV
@@ -107,11 +107,11 @@ def multiImagery(id, rec, mic):
         if ('repeat' in command):
             utils.speak("Okay, how can I help you?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
 
     # Recommend music, give choices
-    text = "Here are 3 music recommendations for you. The first one is front porch piano music. \
+    text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. \
         The second is cozy coffee piano music."
     utils.speak( text )
     utils.speak("And the last one is sweater weather music content. Which music do you wish to listen to? 1, 2, or 3?")
@@ -120,12 +120,12 @@ def multiImagery(id, rec, mic):
     choice = utils.recognize( rec, mic )
     while choice not in ['1', '2', '3']:
         if ('repeat' in choice):
-            text = "Here are 3 music recommendations for you. The first one is front porch piano music. \
+            text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. \
 The second is cozy coffee piano music. And the last one is sweater weather music content."
             utils.speak( text )
             utils.speak("Which music do you wish to listen to? 1, 2, or 3?")
         elif (not choice == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         choice = utils.recognize( rec, mic )
 
     choice_time = time.time() - start_time
@@ -157,7 +157,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
         if ('repeat' in command):
             utils.speak("Do you want to continue this music?")
         elif (not command == ''):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again.")
+            utils.speak( "I'm sorry, please speak again.")
         command = utils.recognize( rec, mic )
 
     continued_time = time.time() - start_time
@@ -186,7 +186,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
             text = 'Please rate your overall satisfaction with your experience on this music recommendation. From one, completely dissatisfied. To seven, completely satisfied.' 
             utils.speak( text )
         elif (not sat == ''):
-            utils.speak("I'm sorry, I did not catch that. Please speak again.")
+            utils.speak("I'm sorry, please speak again.")
         sat = utils.recognize( rec, mic )
     print('Satisfaction: ' + sat)
     sat_time = time.time() - start_time
@@ -201,7 +201,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
             say you are ready when you want to move to the next part.'
     utils.speak( text )
 
-    time.sleep(210)
+    time.sleep(180)
 
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
@@ -210,7 +210,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
 say you are ready when you want to move to the next part.'
             utils.speak( text )    
         elif (not command == ""):
-            utils.speak( "I'm sorry, I did not catch that. Please speak again." )
+            utils.speak( "I'm sorry, please speak again." )
         command = utils.recognize( rec, mic)
     
     # Add log to CSV

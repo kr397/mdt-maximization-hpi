@@ -6,7 +6,6 @@ import utils
 
 def simpleComparative(id, rec, mic):
     log = [id, 'Comparative Condition']
-    # log = {'participant-id':id, 'simple-choice': 'Comparative Condition'}
     utils.log(id, "S3: Comparative Condition")
 
     # Introduction
@@ -23,8 +22,7 @@ def simpleComparative(id, rec, mic):
         command = utils.recognize( rec, mic)
     
     # Recommend music
-    text = "Okay, here is the piano music played most in your location. The number of \
-            today's streams is 7 point 9 million."
+    text = "Okay, here is the piano music played most in your location. The number of today's streams is 7 point 9 million."
     utils.speak( text )
     utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 0, 30 )
     utils.log(id, "Playing: Kiss The Rain")
@@ -46,8 +44,7 @@ def simpleComparative(id, rec, mic):
     utils.log(id, "Continue?: " + command )
     log.append(command)
     log.append(str(continued_time))
-    # log['continued'] = command
-    # log['continued-time'] = str(continued_time)
+
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_02_Kiss\ the\ Rain.mp3', 30, 60 )
@@ -70,12 +67,9 @@ def simpleComparative(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
     log.append(sat)
     log.append(str(sat_time))
-    # log['satisfaction'] = sat
-    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
     utils.speak( text )
 
     time.sleep(180)
@@ -83,8 +77,7 @@ def simpleComparative(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
             utils.speak( "I'm sorry, please speak again." )
@@ -96,7 +89,6 @@ say you are ready when you want to move to the next part.'
 def multiComparative(id, rec, mic):
     utils.log(id, "M3: Comparative Condition")
     log = [id, 'Comparative Condition']
-    # log = {'participant-id':id, 'multiple-choice':'Comparative Condition'}
 
     # Introduction
     text = "Okay, how can I help you?"
@@ -136,8 +128,7 @@ def multiComparative(id, rec, mic):
     choice_time = time.time() - start_time
     log.append(choice)
     log.append(str(choice_time))
-    # log['choice'] = choice
-    # log['choice-time'] = str(choice_time)
+
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: It's Your Day by Yiruma")
@@ -168,8 +159,7 @@ def multiComparative(id, rec, mic):
     continued_time = time.time() - start_time
     log.append(command)
     log.append(str(continued_time))
-    # log['continued'] = command
-    # log['continued-time'] = str(continued_time)
+
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
@@ -198,12 +188,9 @@ def multiComparative(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
     log.append(sat)
     log.append(str(sat_time))
-    # log['satisfaction'] = sat
-    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
     utils.speak( text )
 
     time.sleep(180)
@@ -211,8 +198,7 @@ def multiComparative(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
             utils.speak( "I'm sorry, please speak again." )

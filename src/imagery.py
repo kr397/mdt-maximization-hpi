@@ -6,7 +6,6 @@ import utils
 
 def simpleImagery(id, rec, mic):
     log = [id, 'Imagery Condition']
-    # log = {'participant-id':id, 'simple-choice': 'Imagery Condition'}
     utils.log(id, "S4: Imagery Condition")
 
     # Introduction
@@ -45,8 +44,7 @@ def simpleImagery(id, rec, mic):
     utils.log(id, "Continue?: " + command )
     log.append(command)
     log.append(str(continued_time))
-    # log['continued'] = command
-    # log['continued-time'] = str(continued_time)
+    
     if command == 'yes':
         print('Yes')
         utils.play( 'music-files/1_Simple_03_May\ Be.mp3', 30, 60 )
@@ -69,12 +67,9 @@ def simpleImagery(id, rec, mic):
     utils.log(id, "Satisfaction: " + sat)
     log.append(sat)
     log.append(str(sat_time))
-    # log['satisfaction'] = sat
-    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
     utils.speak( text )
    
     time.sleep(180)
@@ -82,8 +77,7 @@ def simpleImagery(id, rec, mic):
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
             utils.speak( text )
         elif (not command == ""):
             utils.speak( "I'm sorry, please speak again." )
@@ -95,7 +89,6 @@ say you are ready when you want to move to the next part.'
 def multiImagery(id, rec, mic):
     utils.log(id, "M4: Imagery Condition")
     log = [id, 'Imagery Condition']
-    # log = {'participant-id':id, 'multiple-choice':'Imagery Condition'}
 
     # Introduction
     text = "Okay, how can I help you?"
@@ -111,8 +104,7 @@ def multiImagery(id, rec, mic):
         command = utils.recognize( rec, mic)
 
     # Recommend music, give choices
-    text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. \
-        The second is cozy coffee piano music."
+    text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. The second is cozy coffee piano music."
     utils.speak( text )
     utils.speak("And the last one is sweater weather music content. Which music do you wish to listen to? 1, 2, or 3?")
     start_time = time.time()
@@ -120,8 +112,7 @@ def multiImagery(id, rec, mic):
     choice = utils.recognize( rec, mic )
     while choice not in ['1', '2', '3']:
         if ('repeat' in choice):
-            text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. \
-The second is cozy coffee piano music. And the last one is sweater weather music content."
+            text = "Okay, here are 3 music recommendations for you. The first one is front porch piano music. The second is cozy coffee piano music. And the last one is sweater weather music content."
             utils.speak( text )
             utils.speak("Which music do you wish to listen to? 1, 2, or 3?")
         elif (not choice == ''):
@@ -131,8 +122,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
     choice_time = time.time() - start_time
     log.append(choice)
     log.append(str(choice_time))
-    # log['choice'] = choice
-    # log['choice-time'] = str(choice_time)
+    
     utils.log(id, "Choice: " + choice)
     if choice == '1':
         print("Choice 1: Hope by Yiruma")
@@ -163,8 +153,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
     continued_time = time.time() - start_time
     log.append(command)
     log.append(str(continued_time))
-    # log['continued'] = command
-    # log['continued-time'] = str(continued_time)
+    
     utils.log(id, "Continue?: " + command)
     if command == 'yes':
         print('Yes')
@@ -193,12 +182,9 @@ The second is cozy coffee piano music. And the last one is sweater weather music
     utils.log(id, "Satisfaction: " + sat)
     log.append(sat)
     log.append(str(sat_time))
-    # log['satisfaction'] = sat
-    # log['satisfaction-time'] = str(sat_time)
 
     # End instructions
-    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-            say you are ready when you want to move to the next part.'
+    text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
     utils.speak( text )
 
     time.sleep(180)
@@ -206,8 +192,7 @@ The second is cozy coffee piano music. And the last one is sweater weather music
     command = utils.recognize( rec, mic )
     while not ("ready" in command):
         if ("repeat" in command):
-            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and \
-say you are ready when you want to move to the next part.'
+            text = 'Thank you for the feedback. Please fill out the survey on the computer by clicking the next button, and say you are ready when you want to move to the next part.'
             utils.speak( text )    
         elif (not command == ""):
             utils.speak( "I'm sorry, please speak again." )

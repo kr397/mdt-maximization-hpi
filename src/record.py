@@ -32,7 +32,6 @@ class RecordAudio:
         stream.stop_stream()
         stream.close()
         # Terminate the PortAudio interface
-        # s.p.terminate()
 
         print('[record] Finish')
 
